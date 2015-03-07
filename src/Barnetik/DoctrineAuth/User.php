@@ -52,6 +52,8 @@ class User implements AuthenticatableContract, CanResetPasswordContract {
      */
     protected $rememberToken;
     
+    protected $passwordFlag = false;
+    
     /**
      * Get id
      *
