@@ -1,4 +1,4 @@
-<?php namespace Barnetik\Mari;
+<?php namespace Barnetik\DoctrineAuth;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
