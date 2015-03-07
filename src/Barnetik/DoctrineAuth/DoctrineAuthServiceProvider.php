@@ -34,10 +34,23 @@ class DoctrineAuthServiceProvider extends ServiceProvider {
     
     public function boot()
     {
+        // @FIXME: A bit (Tooooooo) dirty. Clean me up when you know more, please, please, pleeeease
+        $em = $this->app->make('Doctrine\ORM\EntityManager');
+        $driverChain = $em->getConfiguration()->getMetadataDriverImpl();
+        foreach ($driverChain->getDrivers() as $namespace => $driver) {
+            $clonedDriver = clone($driver);
+            break;
+        }
+        $driverChain->addDriver($clonedDriver, 'Barnetik\DoctrineAuth');
+        
         Auth::extend('doctrine', function($app) {
-            $provider = new \Intimus\AuthDoctrineUserProvider($app->make('doctrine'), config('auth.model'));
+            $provider = new DoctrineUserProvider($app->make('Doctrine\ORM\EntityManager'), config('auth.model'));
             return new \Illuminate\Auth\Guard($provider, $app['session.store']);
         });
+
+        $this->publishes([
+            __DIR__.'/../../doctrine-migrations' => base_path('/database/doctrine-migrations'),
+        ]);
     }
 
 }

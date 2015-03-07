@@ -8,12 +8,12 @@ use Doctrine\ORM\EntityManagerInterface;
  * Doctrine based user authentication provider
  * @author Arkaitz Etxeberria <arkaitz@barnetik.com>
  */
-class AuthDoctrineUserProvider implements UserProvider, Authenticatable
+class DoctrineUserProvider implements UserProvider
 {
     private $userMapper;
     
-    public function __construct(EntityManagerInterface $entityManager) {
-        $this->userMapper = $entityManager->getRepository('\Entities\User');
+    public function __construct(EntityManagerInterface $entityManager, $model) {
+        $this->userMapper = $entityManager->getRepository($model);
     }
 
     public function retrieveById($identifier) {
