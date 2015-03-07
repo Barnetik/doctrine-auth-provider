@@ -3,8 +3,8 @@
     "description": "",
     "authors": [
         {
-            "name": "Alayn Gortazar",
-            "email": "alayn@barnetik.com"
+            "name": "Arkaitz Etxeberria",
+            "email": "arkaitz@barnetik.com"
         },
         {
             "name": "Alayn Gortazar",
@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Barnetik\\Mari": "src/"
+            "Barnetik\\DoctrineAuth": "src/"
         }
     },
     "minimum-stability": "dev",
