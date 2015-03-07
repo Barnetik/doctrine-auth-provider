@@ -1,0 +1,29 @@
+{
+    "name": "barnetik/doctrine-auth-provider",
+    "description": "",
+    "authors": [
+        {
+            "name": "Alayn Gortazar",
+            "email": "alayn@barnetik.com"
+        },
+        {
+            "name": "Alayn Gortazar",
+            "email": "alayn@barnetik.com"
+        }
+    ],
+    "require": {
+        "illuminate/support": "5.0.*",
+        "atrauzzi/laravel-doctrine": "dev-master",
+        "jms/serializer": "0.17.*@dev"
+    },
+    "autoload": {
+        "psr-0": {
+            "Barnetik\\Mari": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "config": {
+        "preferred-install": "source"
+    }
+
+}
