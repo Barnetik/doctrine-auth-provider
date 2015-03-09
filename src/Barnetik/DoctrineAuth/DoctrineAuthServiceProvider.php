@@ -51,6 +51,10 @@ class DoctrineAuthServiceProvider extends ServiceProvider {
         $this->publishes([
             __DIR__.'/../../doctrine-migrations' => base_path('/database/doctrine-migrations'),
         ]);
+        
+        $this->commands([
+            'Barnetik\DoctrineAuth\Console\Commands\CreateUser'
+        ]);
     }
 
 }
