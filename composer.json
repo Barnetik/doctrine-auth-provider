@@ -1,6 +1,7 @@
 {
     "name": "barnetik/doctrine-auth-provider",
     "description": "Laravel Auth Provider with Doctrine integration",
+    "keywords": ["laravel", "doctrine", "auth", "authentication"],
     "authors": [
         {
             "name": "Arkaitz Etxeberria",
@@ -20,10 +21,5 @@
         "psr-0": {
             "Barnetik\\DoctrineAuth": "src/"
         }
-    },
-    "minimum-stability": "dev",
-    "config": {
-        "preferred-install": "source"
     }
-
 }
