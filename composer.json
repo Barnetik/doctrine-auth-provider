@@ -1,6 +1,6 @@
 {
     "name": "barnetik/doctrine-auth-provider",
-    "description": "",
+    "description": "Laravel Auth Provider with Doctrine integration",
     "authors": [
         {
             "name": "Arkaitz Etxeberria",
