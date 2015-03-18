@@ -2,6 +2,7 @@
     "name": "barnetik/doctrine-auth-provider",
     "description": "Laravel Auth Provider with Doctrine integration",
     "keywords": ["laravel", "doctrine", "auth", "authentication"],
+    "license": "MIT",
     "authors": [
         {
             "name": "Arkaitz Etxeberria",
