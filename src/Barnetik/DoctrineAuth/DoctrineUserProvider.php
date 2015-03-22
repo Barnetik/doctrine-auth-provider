@@ -33,7 +33,7 @@ class DoctrineUserProvider implements UserProvider
     public function validateCredentials(UserContract $user, array $credentials) {
         $userPass = $user->getAuthPassword();
         $pass = $credentials['password'];
-        return password_verify($credentials['password'], $user->getAuthPassword());
+        return password_verify($pass, $userPass);
     }
     
     public function retrieveByToken($identifier, $token) {
