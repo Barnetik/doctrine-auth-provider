@@ -34,14 +34,11 @@ class DoctrineAuthServiceProvider extends ServiceProvider {
     
     public function boot()
     {
-        // @FIXME: A bit (Tooooooo) dirty. Clean me up when you know more, please, please, pleeeease
         $em = $this->app->make('Doctrine\ORM\EntityManager');
+        $driver = \Doctrine\ORM\Mapping\Driver\AnnotationDriver::create(__DIR__);
+        
         $driverChain = $em->getConfiguration()->getMetadataDriverImpl();
-        foreach ($driverChain->getDrivers() as $namespace => $driver) {
-            $clonedDriver = clone($driver);
-            break;
-        }
-        $driverChain->addDriver($clonedDriver, 'Barnetik\DoctrineAuth');
+        $driverChain->addDriver($driver, 'Barnetik\DoctrineAuth');
         
         Auth::extend('doctrine', function($app) {
             $provider = new DoctrineUserProvider($app->make('Doctrine\ORM\EntityManager'), config('auth.model'));
