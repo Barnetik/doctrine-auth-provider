@@ -16,7 +16,7 @@
     "require": {
         "illuminate/support": "5.0.*",
         "atrauzzi/laravel-doctrine": "dev-master",
-        "jms/serializer": "0.17.*@dev"
+        "jms/serializer": "1.*@dev"
     },
     "autoload": {
         "psr-0": {
