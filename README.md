@@ -35,7 +35,7 @@ Composer will download the package. After the package is downloaded, open `confi
  
 Copy the base model to your models path using this command:
 
-```shell
+```php
 $ php artisan doctrine-auth:publish:usermodel \My\Models\Path
 ```
 
@@ -47,13 +47,13 @@ Once the Model is in its place, create the table in the DB.
 
 Generate a migration diff :
 
-```shell
+```php
 $ php vendor/bin/doctrine-laravel migrations:diff
 ```
 
 Check the generated file and if everything is ok, do the migration:
 
-```shell
+```php
 $ php vendor/bin/doctrine-laravel migrations:migrate
 ```
 
