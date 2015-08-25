@@ -6,7 +6,8 @@ package.
 
 ### Installation
 
-Configure [laravel-doctrine](https://github.com/atrauzzi/laravel-doctrine)
+Configure [laravel-doctrine](https://github.com/atrauzzi/la
+ravel-doctrine)
 package with DriverChain driver.
 
 Require `barnetik/doctrine-auth-provider` in composer.json and run `composer update`.
@@ -28,37 +29,54 @@ Composer will download the package. After the package is downloaded, open `confi
     ),
 
 
-Publish assets so migrations can be executed:
+### Usage
 
-```php
-$ php artisan vendor:publish
+#### User model definition
+ 
+Copy the base model to your models path using this command:
+
+```shell
+$ php artisan doctrine-auth:publish:usermodel \My\Models\Path
 ```
 
-Execute migration to generate users table:
+Take care about the **PATH**, the command will use de app_path() as base path.
 
-```php
+#### Table creation
+
+Once the Model is in its place, create the table in the DB.
+
+Generate a migration diff :
+
+```shell
+$ php vendor/bin/doctrine-laravel migrations:diff
+```
+
+Check the generated file and if everything is ok, do the migration:
+
+```shell
 $ php vendor/bin/doctrine-laravel migrations:migrate
 ```
 
-If desired, generate user with provided command:
 
-```php
-$ php artisan doctrine-auth:user:create --username=admin --password=1234
-```
-
-### Usage
+#### Configuration
 
 Open `config/auth.php` and set appropiate driver and model:
 
     [
         ...
         'driver' => 'doctrine',
-        'model' => 'Barnetik\DoctrineAuth\User',
+        'model' => 'My\Models\Path\User',
         ...
     ]
 
 Use authentication as explained on Laravel's [Authentication](http://laravel.com/docs/5.0/authentication)
 chapter.
+
+If desired, generate user with provided command:
+
+```php
+$ php artisan doctrine-auth:user:create --username=admin --password=1234
+```
 
 ### License
 

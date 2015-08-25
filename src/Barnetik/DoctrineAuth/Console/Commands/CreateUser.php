@@ -18,7 +18,7 @@ class CreateUser extends Command {
 	 *
 	 * @var string
 	 */
-	protected $description = 'Command description.';
+	protected $description = 'Create a user with the given username and password.';
 
 	/**
 	 * Create a new command instance.
@@ -37,10 +37,10 @@ class CreateUser extends Command {
 	 */
 	public function fire()
 	{
-		$user = new \Barnetik\DoctrineAuth\User;
+		$user = $this->laravel->make(config('auth.model'));
         $user->setUsername($this->option('username'));
         $user->setPassword($this->option('password'));
-        $em = \App::make('Doctrine\ORM\EntityManager');
+        $em = $this->laravel->make('Doctrine\ORM\EntityManager');
         $em->persist($user);
         $em->flush();
 	}
@@ -64,8 +64,8 @@ class CreateUser extends Command {
 	protected function getOptions()
 	{
 		return [
-			['username', 'u', InputOption::VALUE_REQUIRED, 'User Identity.', null],
-			['password', 'p', InputOption::VALUE_REQUIRED, 'User Password.', null],
+			['username', 'u', InputOption::VALUE_REQUIRED, 'User Identity.', 'admin'],
+			['password', 'p', InputOption::VALUE_REQUIRED, 'User Password.', '1234'],
 		];
 	}
 

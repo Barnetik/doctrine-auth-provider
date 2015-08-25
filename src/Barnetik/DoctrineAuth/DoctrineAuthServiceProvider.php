@@ -22,7 +22,7 @@ class DoctrineAuthServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        
+
     }
 
     /**
@@ -49,12 +49,9 @@ class DoctrineAuthServiceProvider extends ServiceProvider
             return new \Illuminate\Auth\Guard($provider, $app['session.store']);
         });
 
-        $this->publishes([
-            __DIR__ . '/../../doctrine-migrations' => base_path('/database/doctrine-migrations'),
-        ]);
-
         $this->commands([
-            'Barnetik\DoctrineAuth\Console\Commands\CreateUser'
+            'Barnetik\DoctrineAuth\Console\Commands\CreateUser',
+            'Barnetik\DoctrineAuth\Console\Commands\PublishUserModel'
         ]);
     }
 
