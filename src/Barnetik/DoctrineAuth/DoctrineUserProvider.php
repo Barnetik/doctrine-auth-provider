@@ -10,16 +10,18 @@ use Doctrine\ORM\EntityManagerInterface;
  */
 class DoctrineUserProvider implements UserProvider
 {
+    private $em;
     private $userMapper;
-    
+
     public function __construct(EntityManagerInterface $entityManager, $model) {
+        $this->em = $entityManager;
         $this->userMapper = $entityManager->getRepository($model);
     }
 
     public function retrieveById($identifier) {
         return $this->userMapper->find($identifier);
     }
-    
+
     public function retrieveByCredentials(array $credentials) {
         $criteria = [];
         foreach ($credentials as $key => $value) {
@@ -29,24 +31,24 @@ class DoctrineUserProvider implements UserProvider
         }
         return $this->userMapper->findOneBy($criteria);
     }
-    
+
     public function validateCredentials(UserContract $user, array $credentials) {
         $userPass = $user->getAuthPassword();
         $pass = $credentials['password'];
         return password_verify($pass, $userPass);
     }
-    
+
     public function retrieveByToken($identifier, $token) {
         return $this->userMapper->findOneBy([
             "id" => $identifier,
             "rememberToken" => $token
             ]);
     }
-    
+
     public function updateRememberToken(UserContract $user, $token) {
         $user->setRememberToken($token);
-        \Doctrine::persist($user);
-        \Doctrine::flush();
+        $this->em->persist($user);
+        $this->em->flush();
     }
-    
+
 }
