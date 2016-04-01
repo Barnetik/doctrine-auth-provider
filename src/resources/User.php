@@ -11,7 +11,7 @@ use JMS\Serializer\Annotation as Serializer;
  *
  * @ORM\Entity
  * @ORM\Table(
- * name="Userios",
+ * name="User",
  * options={
  *  "mari": {
  *      "displayFields": {"username"}
